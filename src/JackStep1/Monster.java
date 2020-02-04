@@ -1,3 +1,5 @@
+package JackStep1;
+
 public class Monster {
     private int name;
     private int moveCount;

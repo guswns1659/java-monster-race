@@ -1,3 +1,5 @@
+package JackStep1;
+
 public class User {
     public void start() {
         Input input = new Input();
