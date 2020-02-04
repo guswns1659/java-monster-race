@@ -9,6 +9,14 @@ public class Input {
         scanner = new Scanner(System.in);
     }
 
+    public int getNumberOfMonster() {
+        return NumberOfMonster;
+    }
+
+    public int getNumberOfTries() {
+        return NumberOfTries;
+    }
+
     public void showTitle() {
         System.out.println("스릴 만점 건전한 몬스터 경주");
     }
