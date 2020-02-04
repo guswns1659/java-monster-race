@@ -1,2 +1,2 @@
-public class Monster extends Game {
+public class Monster {
 }

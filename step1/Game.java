@@ -1,2 +1,2 @@
-public class Game extends Output {
+public class Game {
 }

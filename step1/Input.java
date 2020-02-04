@@ -1,2 +1,2 @@
-public class Input extends Game {
+public class Input {
 }

@@ -1,2 +1,2 @@
-public class User extends Input {
+public class User {
 }
