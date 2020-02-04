@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>Main</OriginalElement>
+  <nodes>
+    <node x="-307.0" y="52.0">Input</node>
+    <node x="-119.0" y="55.0">Game</node>
+    <node x="-481.0" y="53.0">User</node>
+    <node x="85.0" y="53.0">Output</node>
+    <node x="-133.0" y="191.0">Monster</node>
+    <node x="156.0" y="-283.0">Main</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="1.0" x="-497.5" y="30.5" />
+  <SelectedNodes>
+    <node>Main</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
