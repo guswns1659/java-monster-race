@@ -1,4 +1,4 @@
-package JackStep1;
+package JackStep1to2;
 
 public class User {
     public void start() {

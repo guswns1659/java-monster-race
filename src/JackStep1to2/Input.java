@@ -1,4 +1,4 @@
-package JackStep1;
+package JackStep1to2;
 
 import java.util.Scanner;
 
