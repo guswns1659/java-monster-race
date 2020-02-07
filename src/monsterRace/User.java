@@ -1,7 +1,9 @@
 package monsterRace;
 
+import java.io.IOException;
+
 public class User {
-    public void start() {
+    public void start() throws IOException {
         Input input = new Input();
         input.showTitle();
         input.askUser();
