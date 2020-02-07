@@ -27,6 +27,10 @@ public class Input {
         return NumberOfTries;
     }
 
+    public List<String[]> getProfilesOfMonsters() {
+        return profilesOfMonsters;
+    }
+
     public void showTitle() {
         System.out.println("신나는 몬스터 레이스");
     }

@@ -8,7 +8,8 @@ public class User {
         input.showTitle();
         input.askUser();
 
-        Game game = new Game(input.getNumberOfMonster(), input.getNumberOfTries());
+        Game game = new Game(input.getNumberOfMonster(),
+                input.getNumberOfTries(), input.getProfilesOfMonsters());
         game.gameStart();
 
         Output output = new Output();
