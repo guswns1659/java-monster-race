@@ -27,22 +27,6 @@ public class Game {
     public void gameStart() {
         for (Monster each : this.monsters) {
             each.tryForMove(this.numberOfTries);
-//            tryForMove(each);
         }
     }
-//
-//    private void tryForMove(Monster each) {
-//        for (int count = 0; count < this.numberOfTries; count++) {
-//            isMove(each);
-//        }
-//    }
-//
-//    private void isMove(Monster each) {
-//        int random = getRandom();
-//        if (random > 3) each.move();
-//    }
-
-//    private int getRandom() {
-//        return new Random().nextInt(10);
-//    }
 }

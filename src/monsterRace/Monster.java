@@ -24,7 +24,6 @@ public class Monster {
             isMove();
         }
     }
-
     private void isMove() {
         if (random() > 3) move();
     }
