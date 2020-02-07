@@ -13,7 +13,6 @@ public class User {
         game.gameStart();
 
         Output output = new Output();
-        output.print(game.getMonsters());
-
+        output.print(game.getMonsters(), game.winner());
     }
 }

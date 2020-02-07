@@ -5,16 +5,16 @@ import java.util.List;
 
 public class MonsterConstructor {
 
-    public List<Monsters> createAll(List<String[]> profilesOfMonsters) {
-        List<Monsters> monsters = new ArrayList<>();
+    public List<Monster> createAll(List<String[]> profilesOfMonsters) {
+        List<Monster> monsters = new ArrayList<>();
         for (String[] profile : profilesOfMonsters) {
-            Monsters monster = create(profile);
+            Monster monster = create(profile);
             monsters.add(monster);
         }
         return monsters;
     }
 
-    private Monsters create(String[] profile) {
+    private Monster create(String[] profile) {
         String name = profile[0];
         String type = profile[1];
         if (isRunner(type)) {

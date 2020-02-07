@@ -2,10 +2,9 @@ package monsterRace;
 
 import java.util.Random;
 
-public class Esper implements Monsters {
+public class Esper implements Monster {
     private String name;
     private int moveCount;
-    private String type = "에스퍼";
 
     public Esper(String name) {
         this.name = name;
@@ -22,7 +21,7 @@ public class Esper implements Monsters {
 
     @Override
     public String getType() {
-        return type;
+        return "에스퍼";
     }
 
     // 랜덤값이 9인 경우만 1<= x <= 100 만큼 전진

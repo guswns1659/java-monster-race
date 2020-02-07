@@ -2,10 +2,9 @@ package monsterRace;
 
 import java.util.Random;
 
-public class Flight implements Monsters {
+public class Flight implements Monster {
     private String name;
     private int moveCount;
-    private String type = "비행";
 
     public Flight(String name) {
         this.name = name;
@@ -22,11 +21,9 @@ public class Flight implements Monsters {
 
     @Override
     public String getType() {
-        return type;
+        return "비행";
     }
 
-
-    // 랜덤값이 6이상인 경우 3칸 이동
     @Override
     public void tryForMove(int numberOfTries) {
         for (int count = 0; count < numberOfTries; count++){
