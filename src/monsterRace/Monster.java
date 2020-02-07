@@ -18,7 +18,6 @@ public class Monster {
         return moveCount;
     }
 
-
     public void tryForMove(int numberOfTries) {
         for (int count = 0; count < numberOfTries; count++) {
             isMove();

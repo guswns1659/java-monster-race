@@ -14,7 +14,7 @@ public class Game {
         monsters = new ArrayList<>();
 
         int monsterName = 0;
-        for (int count = 0; count < numberOfMonster; count++){
+        for (int count = 0; count < this.numberOfMonster; count++){
             monsterName++;
             monsters.add(new Monster(monsterName));
         }
