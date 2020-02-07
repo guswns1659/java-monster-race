@@ -1,4 +1,4 @@
-package JackStep1to2;
+package monsterRace;
 
 public class Main {
     public static void main(String[] args) {

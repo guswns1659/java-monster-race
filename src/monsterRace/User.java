@@ -1,4 +1,4 @@
-package JackStep1to2;
+package monsterRace;
 
 public class User {
     public void start() {
