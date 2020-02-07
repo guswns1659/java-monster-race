@@ -1,7 +1,8 @@
 package monsterRace;
 
 public interface Monsters {
-    public void tryForMove();
-    public String getName();
-    public int getMoveCount();
+    void tryForMove(int numberOfTries);
+    String getName();
+    int getMoveCount();
+    String getType();
 }

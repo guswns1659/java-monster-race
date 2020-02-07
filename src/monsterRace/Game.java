@@ -28,9 +28,12 @@ public class Game {
 
     public void gameStart() {
        this.monsters = monsterConstructor.createAll(this.profilesOfMonsters);
-       for ( Monsters each : this.monsters) {
-           System.out.println(each);
+       for (Monsters each : this.monsters) {
+           each.tryForMove(numberOfTries);
+           System.out.println(each.getName());
+           System.out.println(each.getMoveCount());
        }
+
 //        for (Monster each : this.monsters) {
 //            each.tryForMove(this.numberOfTries);
 //        }

@@ -10,7 +10,8 @@ public class Output {
     }
 
     private void printEach(Monsters each) {
-        System.out.print(each.getName() + "번 몬스터 : ");
+        System.out.print(each.getName() + " ");
+        System.out.print("["+ each.getType() + "] : ");
         for (int count = 0; count < each.getMoveCount(); count++) {
             System.out.print("-");
         }
