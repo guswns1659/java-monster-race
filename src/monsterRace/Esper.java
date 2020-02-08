@@ -10,24 +10,24 @@ public class Esper implements Monster {
         this.name = name;
     }
 
-    public String getName() {
+    @Override
+    public String name() {
         return name;
     }
 
     @Override
-    public int getMoveCount() {
+    public int moveCount() {
         return moveCount;
     }
 
     @Override
-    public String getType() {
+    public String type() {
         return "에스퍼";
     }
 
-    // 랜덤값이 9인 경우만 1<= x <= 100 만큼 전진
     @Override
-    public void tryForMove(int numberOfTries) {
-        for (int count = 0; count < numberOfTries; count++){
+    public void move(int attempts) {
+        for (int count = 0; count < attempts; count++){
             isMove();
         }
     }

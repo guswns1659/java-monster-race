@@ -11,13 +11,12 @@ public class Output {
     }
 
     private void printWinner(Monster winner) {
-        System.out.println("승자는 " + winner.getName() + " 입니다!!");
+        System.out.println("\n승자는 " + winner.name() + "입니다!!");
     }
 
     private void printEach(Monster each) {
-        System.out.print(each.getName() + " ");
-        System.out.print("["+ each.getType() + "] : ");
-        for (int count = 0; count < each.getMoveCount(); count++) {
+        System.out.printf( "%s [%s] : ",each.name(),each.type());
+        for (int count = 0; count < each.moveCount(); count++) {
             System.out.print("-");
         }
         System.out.println();

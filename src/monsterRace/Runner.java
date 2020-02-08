@@ -10,23 +10,23 @@ public class Runner implements Monster {
         this.name = name;
     }
 
-    public String getName() {
+    @Override
+    public String name() {
         return name;
     }
-
     @Override
-    public int getMoveCount() {
+    public int moveCount() {
         return moveCount;
     }
 
     @Override
-    public String getType() {
+    public String type() {
         return "달리기";
     }
 
     @Override
-    public void tryForMove(int numberOfTries) {
-        for (int count = 0; count < numberOfTries; count++){
+    public void move(int attempts) {
+        for (int count = 0; count < attempts; count++){
             isMove();
         }
     }

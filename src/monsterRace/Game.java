@@ -1,25 +1,18 @@
 package monsterRace;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.OptionalInt;
+import java.util.*;
 
 public class Game {
     private List<Monster> monsters;
-    private List<String[]> profilesOfMonsters;
     private Monster winner;
-    private int numberOfMonster;
-    private int numberOfTries;
-
+    private int attempts;
     private MonsterConstructor monsterConstructor;
 
-    public Game(int numberOfMonster, int numberOfTries,
-                List<String[]> profilesOfMonsters) {
-        this.numberOfMonster = numberOfMonster;
-        this.numberOfTries = numberOfTries;
-        this.profilesOfMonsters = profilesOfMonsters;
+    public Game(int attempts, List<String[]> profilesOfMonsters) {
+        this.attempts = attempts;
         monsters = new ArrayList<>();
         monsterConstructor = new MonsterConstructor();
+        generateMonsters(profilesOfMonsters);
     }
 
     public List<Monster> getMonsters() {
@@ -27,28 +20,34 @@ public class Game {
     }
 
     public void gameStart() {
-       this.monsters = monsterConstructor.createAll(this.profilesOfMonsters);
-       for (Monster each : this.monsters) {
-           each.tryForMove(numberOfTries);
-       }
-       setWinner();
+        racing();
+        setWinner();
     }
 
     public Monster winner() {
         return this.winner;
     }
 
+    private void generateMonsters(List<String[]> profilesOfMonsters) {
+        this.monsters = monsterConstructor.createAll(profilesOfMonsters);
+    }
+
+    private void racing() {
+        for (Monster each : this.monsters) {
+            each.move(this.attempts);
+        }
+    }
+
     private void setWinner() {
         List<Integer> moveCounts = new ArrayList<>();
         for (Monster each : this.monsters) {
-            moveCounts.add(each.getMoveCount());
+            moveCounts.add(each.moveCount());
         }
         OptionalInt max = moveCounts.stream()
                 .mapToInt(i -> i)
                 .max();
-
         for (Monster each : this.monsters) {
-            if (max.getAsInt() == each.getMoveCount()) {
+            if (max.getAsInt() == each.moveCount()) {
                 this.winner = each;
             }
         }
