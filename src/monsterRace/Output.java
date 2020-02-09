@@ -4,9 +4,6 @@ import java.util.List;
 
 public class Output {
     public void print(List<Monster> monsters, Monster winner) {
-//        for (Monster each : monsters) {
-//            printEach(each);
-//        }
         monsters.forEach(this::printEach);
         printWinner(winner);
     }
