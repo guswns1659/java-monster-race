@@ -1,7 +1,10 @@
 package monsterRace;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Input {
     private BufferedReader bufferedReader;
@@ -11,8 +14,6 @@ public class Input {
     private Parser parser;
 
     public Input() {
-        bufferedReader = new BufferedReader(
-                new InputStreamReader(System.in));
         profilesOfMonsters = new ArrayList<>();
         parser = new Parser();
     }
@@ -30,9 +31,16 @@ public class Input {
     }
 
     public void askUser() throws IOException {
+        ready();
         askNumberOfMonster();
         askProfileOfMonster();
         askAttempts();
+        close();
+    }
+
+    private void ready() {
+        this.bufferedReader = new BufferedReader(
+                new InputStreamReader(System.in));
     }
 
     private void askNumberOfMonster() {
@@ -40,7 +48,7 @@ public class Input {
         try {
             this.NumberOfMonster = Integer.parseInt(bufferedReader.readLine());
             if (this.NumberOfMonster < 0) throw new Exception();
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("1 이상 양수를 입력해주세요.");
             askNumberOfMonster();
         }
@@ -64,5 +72,9 @@ public class Input {
             System.out.println("1 이상 양수를 입력해주세요.");
             askAttempts();
         }
+    }
+
+    private void close() throws IOException {
+        this.bufferedReader.close();
     }
 }
