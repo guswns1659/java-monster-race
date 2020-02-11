@@ -3,7 +3,7 @@ package monsterRace;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MonsterConstructor {
+public class MonsterFactory {
 
     public List<Monster> createAll(List<String[]> profilesOfMonsters) {
         List<Monster> monsters = new ArrayList<>();

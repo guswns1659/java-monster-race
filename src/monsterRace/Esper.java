@@ -2,46 +2,25 @@ package monsterRace;
 
 import java.util.Random;
 
-public class Esper implements Monster {
-    private String name;
-    private int moveCount;
+public class Esper extends Monster {
+    private static final String TYPE = "에스퍼";
 
     public Esper(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String name() {
-        return name;
-    }
-
-    @Override
-    public int moveCount() {
-        return moveCount;
+        super(name);
     }
 
     @Override
     public String type() {
-        return "에스퍼";
+        return TYPE;
     }
 
     @Override
-    public void move(int attempts) {
-        for (int count = 0; count < attempts; count++){
-            isMove();
-        }
-    }
-
-    private void isMove() {
+    protected void tryMove() {
         if (random() == 9) move();
     }
 
-    private void move() {
-        int moveCount = new Random().nextInt(100) + 1;
-        this.moveCount += moveCount;
-    }
-
-    private int random() {
-        return new Random().nextInt(10);
+    @Override
+    protected void move() {
+        this.moveCount += new Random().nextInt(100) + 1;
     }
 }

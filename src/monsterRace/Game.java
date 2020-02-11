@@ -8,12 +8,12 @@ public class Game {
     private List<Monster> monsters;
     private Monster winner;
     private int attempts;
-    private MonsterConstructor monsterConstructor;
+    private MonsterFactory monsterConstructor;
 
     public Game(int attempts, List<String[]> profilesOfMonsters) {
         this.attempts = attempts;
         monsters = new ArrayList<>();
-        monsterConstructor = new MonsterConstructor();
+        monsterConstructor = new MonsterFactory();
         generateMonsters(profilesOfMonsters);
     }
 
@@ -39,16 +39,11 @@ public class Game {
     }
 
     private void setWinner() {
-        List<Integer> moveCounts = new ArrayList<>();
-        this.monsters
-                .forEach(each -> moveCounts.add(each.moveCount()));
-
-        OptionalInt max = moveCounts.stream()
-                .mapToInt(i -> i)
+        OptionalInt max = this.monsters.stream()
+                .mapToInt(Monster::moveCount)
                 .max();
-
         for (Monster each : this.monsters) {
-            if (max.getAsInt() == each.moveCount()) {
+            if (max.orElse(0) == each.moveCount()) {
                 this.winner = each;
             }
         }

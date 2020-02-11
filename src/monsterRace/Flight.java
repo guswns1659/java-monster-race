@@ -1,46 +1,24 @@
 package monsterRace;
 
-import java.util.Random;
-
-public class Flight implements Monster {
-    private String name;
-    private int moveCount;
+public class Flight extends Monster {
+    private static final String TYPE = "비행";
 
     public Flight(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String name() {
-        return name;
-    }
-
-    @Override
-    public int moveCount() {
-        return moveCount;
+        super(name);
     }
 
     @Override
     public String type() {
-        return "비행";
+        return TYPE;
     }
 
     @Override
-    public void move(int attempts) {
-        for (int count = 0; count < attempts; count++){
-            isMove();
-        }
-    }
-
-    private void isMove() {
+    protected void tryMove() {
         if (random() > 5) move();
     }
 
-    private void move() {
+    @Override
+    protected void move() {
         this.moveCount += 3;
-    }
-
-    private int random() {
-        return new Random().nextInt(10);
     }
 }
