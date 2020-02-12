@@ -5,8 +5,19 @@ import java.util.Arrays;
 
 public class test {
     public static void main(String[] args) {
-        fileReaderTest();
-        readFile();
+//        fileWriterTest();
+//        readFile();
+        bufferedOutputStreamTest();
+    }
+
+    private static void bufferedOutputStreamTest() {
+        try (BufferedWriter bo =
+                     new BufferedWriter(new FileWriter("count.txt"))) {
+            bo.write(String.valueOf(7));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private static void readFile() {
@@ -20,7 +31,7 @@ public class test {
         }
     }
 
-    private static void fileReaderTest() {
+    private static void fileWriterTest() {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
              BufferedWriter bw = new BufferedWriter(new FileWriter("profiles.txt"))) {
             System.out.print("몬스터 숫자는?");

@@ -1,27 +1,22 @@
 package monsterRace;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class InputView {
     private BufferedReader bufferedReader;
     private List<String[]> profilesOfMonsters;
-    private int NumberOfMonster;
+    private int numberOfMonster;
     private int attempts;
     private Show show;
-    private Adjust adjust;
-    private Delete delete;
 
     private Parser parser;
 
     public InputView() {
         profilesOfMonsters = new ArrayList<>();
         show = new Show();
-        adjust = new Adjust();
-        delete = new Delete();
         parser = new Parser();
     }
 
@@ -39,12 +34,8 @@ public class InputView {
 
     public void askUser() throws IOException {
         ready();
-//        askNumberOfMonster();
-//        askProfileOfMonster();
-//        askAttempts();
-//        close();
         askMenu();
-//        askInformationMenu(choice);
+        close();
     }
 
     private void askInformationMenu() throws IOException {
@@ -65,19 +56,30 @@ public class InputView {
                 show.showMonsters(this.profilesOfMonsters);
                 askInformationMenu();
                 break;
-//            case 2:
-//                adjust.adjustMonsters();
-//                askInformationMenu();
+            case 2:
+                askProfileOfMonster();
+                askInformationMenu();
+                break;
             case 3:
                 askProfile();
                 askInformationMenu();
                 break;
-//            case 4:
-//                delete.deleteMonsters();
+            case 4:
+                initialize();
+                break;
             case 5:
                 askUser();
                 break;
         }
+    }
+
+    private void initialize() throws IOException {
+        new FileWriter("count.txt", false).close();
+        new FileWriter("profiles.txt", false).close();
+        new FileWriter("attempts.txt", false).close();
+        this.profilesOfMonsters = new ArrayList<>();
+        this.attempts = 0;
+        this.numberOfMonster = 0;
     }
 
     private void askProfile() throws IOException {
@@ -85,7 +87,6 @@ public class InputView {
         askNumberOfMonster();
         askProfileOfMonster();
         askAttempts();
-//        close();
     }
 
     private void askMenu() throws IOException {
@@ -104,8 +105,9 @@ public class InputView {
     private void askNumberOfMonster() {
         System.out.println("몇 명의 몬스터가 경주하나요?");
         try {
-            this.NumberOfMonster = Integer.parseInt(bufferedReader.readLine());
-            if (this.NumberOfMonster < 0) throw new Exception();
+            this.numberOfMonster = Integer.parseInt(bufferedReader.readLine());
+            if (this.numberOfMonster < 1) throw new Exception();
+            numberOfWriter(this.numberOfMonster);
         } catch (Exception e) {
             System.out.println("1 이상 양수를 입력해주세요.");
             askNumberOfMonster();
@@ -115,9 +117,10 @@ public class InputView {
     private void askProfileOfMonster() throws IOException {
         System.out.println("경주할 몬스터의 이름과 종류를 입력하세요. ex) 크롱, 달리기");
         System.out.println("몬스터 종류 : 달리기, 비행, 에스퍼");
-        for (int count = 0; count < this.NumberOfMonster; count++) {
+        for (int count = 0; count < this.numberOfMonster; count++) {
             String[] profile = parser.parse(bufferedReader.readLine());
             this.profilesOfMonsters.add(profile);
+            profilesWriter(profile);
         }
     }
 
@@ -125,7 +128,8 @@ public class InputView {
         System.out.println("시도할 횟수는 몇 회인가요??");
         try {
             this.attempts = Integer.parseInt(bufferedReader.readLine());
-            if (this.attempts < 0) throw new Exception();
+            if (this.attempts < 1) throw new Exception();
+            attemptsWriter(this.attempts);
         } catch (Exception e) {
             System.out.println("1 이상 양수를 입력해주세요.");
             askAttempts();
@@ -135,4 +139,30 @@ public class InputView {
     private void close() throws IOException {
         this.bufferedReader.close();
     }
+
+    private void numberOfWriter(int countOfMonster) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("count.txt", true))) {
+            bw.write(String.valueOf(countOfMonster));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void profilesWriter(String[] profiles) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("profiles.txt", true))) {
+            bw.write(Arrays.toString(profiles) + "/");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void attemptsWriter(int attempts) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("attempts.txt", true))) {
+            bw.write(String.valueOf(attempts));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }
