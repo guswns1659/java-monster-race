@@ -5,10 +5,10 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
         User user = new User();
-        Input input = new Input();
-        user.start(input);
+        InputView inputView = new InputView();
+        user.start(inputView);
 
-        Game game = new Game(input.attempts(), input.ProfilesOfMonsters());
+        Game game = new Game(inputView.attempts(), inputView.ProfilesOfMonsters());
         game.gameStart();
 
         Output output = new Output();
